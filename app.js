@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var wx = require('./routes/wx');
 
 var app = express();
 
@@ -55,6 +56,10 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+//wechat route
+app.get('/service', wx.getService);
+app.post('/service', wx.postService);
 
 
 module.exports = app;
